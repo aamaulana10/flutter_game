@@ -62,7 +62,29 @@ class _DetailViewState extends State<DetailView> {
                  fontWeight: FontWeight.w600
                 )),
                 SizedBox(height: 16,),
-                Text(data.released ?? "", style: TextStyle(
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: data.genres?.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (ctx, idx){
+                      return Container(
+                        margin: EdgeInsets.all(4),
+                        padding: EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(16)
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(data.genres?[idx].name ?? "", style: TextStyle(
+                         color: Colors.white
+                        )),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 16),
+                Text("Release at ${data.released ?? ""}", style: TextStyle(
                     color: Colors.white,
                 )),
                 SizedBox(height: 16,),
@@ -70,8 +92,8 @@ class _DetailViewState extends State<DetailView> {
                     color: Colors.white,
                 )),
                 SizedBox(height: 16,),
-                Text("Rating ${data.rating}", style: TextStyle(
-                    color: Colors.white,
+                Text("Rating ${data.rating == 0 ? "unknown" : data.rating}", style: TextStyle(
+                    color: Colors.white
                 ))
               ],
             ),

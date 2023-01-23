@@ -38,6 +38,7 @@ class HomeHighlightWidget extends StatelessWidget {
                             memCacheHeight: 240,
                             imageBuilder: (context, imageProvider) => Container(
                               decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
                                 image: DecorationImage(
                                   image: imageProvider,
                                   fit: BoxFit.fill,
@@ -57,15 +58,18 @@ class HomeHighlightWidget extends StatelessWidget {
                               children: [
                                 Text(data.name ?? "", style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w500
+                                    fontWeight: FontWeight.w500,
+                                  fontSize: 16
                                 )),
-                                Text("release at ${data.released}", style: TextStyle(
+                                SizedBox(height: 8),
+                                Text("Release at ${data.released}", style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w500
+                                  fontSize: 12
                                 )),
-                                Text("score ${data.metacritic.toString()}", style: TextStyle(
+                                SizedBox(height: 8),
+                                Text("Metastatic score ${data.metacritic == null ? "Unknown" : data.metacritic.toString()}", style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w500
+                                  fontSize: 12
                                 )),
                               ],
                               crossAxisAlignment: CrossAxisAlignment.start,

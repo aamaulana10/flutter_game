@@ -15,6 +15,7 @@ class RemoteDataSource{
 
       return data;
     }catch(e) {
+
       throw e;
     }
   }
@@ -25,9 +26,6 @@ class RemoteDataSource{
       var response = await ApiCall.getRequest(ApiCall.getDetailGameById(gameId));
 
       var data = GameDetailModel.fromJson(response.data);
-
-      print("detail");
-      print(data.toJson());
 
       return data;
     }catch(e) {
