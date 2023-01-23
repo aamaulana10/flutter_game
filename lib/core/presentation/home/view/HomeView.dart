@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game/core/presentation/home/HomePresenter.dart';
+import 'package:flutter_game/core/presentation/home/presenter/HomePresenter.dart';
 import 'package:flutter_game/core/presentation/home/widget/HomeHighlightWidget.dart';
 import 'package:get/get.dart';
 

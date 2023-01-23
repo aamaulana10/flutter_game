@@ -16,6 +16,7 @@ dependencies:
   cached_network_image: ^3.2.1
   get: ^4.6.5
   http: any
+  intl: ^0.17.0
   dio: ^4.0.6
   dio_cookie_manager: ^2.0.0
   path_provider: ^2.0.11

@@ -1,21 +1,26 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter_game/core/utils/dateHelper/DateHelper.dart';
 
 class ApiCall {
 
   static Dio dio = Dio();
 
-  static String BASE_URL = "https://api.rawg.io/api/games?key=70cafe535be14968b26d1fe6ae03b005";
+  static String BASE_URL = "https://api.rawg.io/api/games";
+  static String KEY = "70cafe535be14968b26d1fe6ae03b005";
   static int PAGE_SIZE = 20;
 
   static String getHighlightGameByPage(int page) {
 
-    return BASE_URL + "&page=${page}&page_size=${PAGE_SIZE}&platforms=187&ordering=-released";
+    var currentDate = DateHelper.formatDateToApiSortTime(DateTime.now().toString());
+    var oneYearBefore = DateHelper.formatDateToApiSortTime(DateTime(DateTime.now().year - 1).toString());
+
+    return BASE_URL + "?key=${KEY}&page=${page}&page_size=${PAGE_SIZE}&platforms=187&dates=${oneYearBefore},${currentDate}&ordering=-released";
   }
 
-  static String getNewestGameByPage(int page) {
+  static String getDetailGameById(int gameId) {
 
-    return BASE_URL + "&page=${page}&page_size=${PAGE_SIZE}&ordering=released";
+    return BASE_URL + "/${gameId}?key=${KEY}";
   }
 
   static String searchGameByPage(int page, int pageSize, String query) {

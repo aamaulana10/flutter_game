@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/core/domain/model/GameModel.dart';
 import 'package:flutter_game/core/injection/Injection.dart';
+import 'package:flutter_game/core/presentation/home/router/HomeRouter.dart';
 import 'package:get/get.dart';
 
 class HomePresenter extends GetxController {
 
   var useCase = Injection().provideUsecase();
-  List<GameResults> newestGame = [];
+  var router = HomeRouter();
   List<GameResults> highlightGame = [];
   ScrollController scrollController = new ScrollController(initialScrollOffset: 5.0);
   int currentPage = 1;
@@ -14,22 +15,8 @@ class HomePresenter extends GetxController {
 
   initPresenter() {
     getHighlightGame();
-    getNewestGame();
 
     scrollController.addListener(_scrollListener);
-  }
-
-  getNewestGame() async{
-
-    try {
-
-      var data = await useCase.getNewestGameByPage();
-      newestGame = data.results ?? [];
-    } catch (e) {
-      print(e.toString());
-    }
-
-    update();
   }
 
   getHighlightGame() async{
@@ -77,5 +64,10 @@ class HomePresenter extends GetxController {
         // }
       }
     }
+  }
+
+  gotoDetail(int gameId) {
+
+    router.gotoDetail(gameId);
   }
 }

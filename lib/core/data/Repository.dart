@@ -1,10 +1,11 @@
 import 'package:flutter_game/core/data/remote/RemoteDataSource.dart';
+import 'package:flutter_game/core/domain/model/GameDetailModel.dart';
 import 'package:flutter_game/core/domain/model/GameModel.dart';
 
 abstract class RepositoryProtocol {
 
-  Future<GameResponse> getNewestGameByPage();
   Future<GameResponse> getHighlightGameByPage(int page);
+  Future<GameDetailModel> getGameById(int gameId);
 }
 
 class Repository extends RepositoryProtocol {
@@ -14,15 +15,15 @@ class Repository extends RepositoryProtocol {
   Repository({required this.remoteDataSource});
 
   @override
-  Future<GameResponse> getNewestGameByPage() {
-
-    return remoteDataSource.getNewestGameByPage();
-  }
-
-  @override
   Future<GameResponse> getHighlightGameByPage(int page) {
 
     return remoteDataSource.getHighlightGameByPage(page);
+  }
+
+  @override
+  Future<GameDetailModel> getGameById(int gameId) {
+
+    return remoteDataSource.getGameById(gameId);
   }
 
 }
