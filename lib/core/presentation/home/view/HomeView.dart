@@ -28,15 +28,6 @@ class _HomeViewState extends State<HomeView> {
         title: Text("99.co Games"),
         centerTitle: true,
         backgroundColor: Colors.black26,
-        actions: [
-          IconButton(
-              onPressed: () {
-                print("search");
-              },
-              icon: Icon(Icons.search)
-          ),
-          SizedBox(width: 16)
-        ],
       ),
       backgroundColor: Colors.black26,
       body: GetBuilder<HomePresenter>(builder: (controller) {

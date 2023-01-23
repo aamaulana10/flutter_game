@@ -6,8 +6,13 @@ class DetailPresenter extends GetxController {
 
   var useCase = Injection().provideUsecase();
   var gameDetailModel = GameDetailModel();
+  var isLoading = false;
 
   getDetailGame(gameId) async{
+
+    isLoading = true;
+
+    update();
 
     try {
 
@@ -17,6 +22,8 @@ class DetailPresenter extends GetxController {
 
       print(e);
     }
+
+    isLoading = false;
 
     update();
   }

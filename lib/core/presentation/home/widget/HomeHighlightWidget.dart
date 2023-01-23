@@ -11,31 +11,7 @@ class HomeHighlightWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              height: 40,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text("Recommended Game",style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600
-                    ),),
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        print("see all");
-                      },
-                      child: Text("See all")
-                  )
-                ],
-              )
-          ),
-          Expanded(
-            child: GridView.builder(
+      child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
                   mainAxisExtent: 240,
@@ -104,10 +80,7 @@ class HomeHighlightWidget extends StatelessWidget {
                   ),
                 );
               },
-            ),
-          )
-        ],
-      ),
+            )
     );
   }
 }

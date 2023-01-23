@@ -25,12 +25,14 @@ class _DetailViewState extends State<DetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black26,
       body: GetBuilder<DetailPresenter>(builder: (controller) {
 
         var data = controller.gameDetailModel;
-
-        return Container(
-          child: SingleChildScrollView(
+        return  Container(
+          child: controller.isLoading ?
+          Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,10 +55,24 @@ class _DetailViewState extends State<DetailView> {
                 )
                     :
                 Container(),
-                Text(data.name ?? ""),
-                Text(data.released ?? ""),
-                Text(data.description ?? ""),
-                Text("Rating ${data.rating}")
+                SizedBox(height: 16,),
+                Text(data.name ?? "", style: TextStyle(
+                 color: Colors.white,
+                 fontSize: 18,
+                 fontWeight: FontWeight.w600
+                )),
+                SizedBox(height: 16,),
+                Text(data.released ?? "", style: TextStyle(
+                    color: Colors.white,
+                )),
+                SizedBox(height: 16,),
+                Text(data.descriptionRaw ?? "", style: TextStyle(
+                    color: Colors.white,
+                )),
+                SizedBox(height: 16,),
+                Text("Rating ${data.rating}", style: TextStyle(
+                    color: Colors.white,
+                ))
               ],
             ),
           )
