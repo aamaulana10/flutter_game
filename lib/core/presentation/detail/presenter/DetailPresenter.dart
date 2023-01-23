@@ -1,5 +1,6 @@
 import 'package:flutter_game/core/domain/model/GameDetailModel.dart';
 import 'package:flutter_game/core/injection/Injection.dart';
+import 'package:flutter_game/core/utils/AlertHelper.dart';
 import 'package:get/get.dart';
 
 class DetailPresenter extends GetxController {
@@ -21,6 +22,7 @@ class DetailPresenter extends GetxController {
     }catch (e) {
 
       print(e);
+      AlertHelper.showErrorSnackBar("Ups, error", "We'll fix it soon");
     }
 
     isLoading = false;

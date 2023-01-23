@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_game/core/domain/model/GameModel.dart';
 import 'package:flutter_game/core/injection/Injection.dart';
 import 'package:flutter_game/core/presentation/home/router/HomeRouter.dart';
+import 'package:flutter_game/core/utils/AlertHelper.dart';
 import 'package:get/get.dart';
 
 class HomePresenter extends GetxController {
@@ -41,6 +42,8 @@ class HomePresenter extends GetxController {
       }
     } catch (e) {
       print(e.toString());
+
+      AlertHelper.showErrorSnackBar("Ups, error", "We'll fix it soon");
     }
 
     isLoading = false;
